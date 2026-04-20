@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --font-main: 'Inter', sans-serif;
+
+  /* Warna tema biru profesional */
+  --color-primary: #1e40af;     /* biru tua - Tailwind blue-800 */
+  --color-primary-light: #3b82f6; /* biru terang - Tailwind blue-500 */
+  --color-bg: #f8fafc;          /* abu-abu soft */
+  --color-text: #1f2937;        /* slate-800 */
+}
+
+html, body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+
+a {
+  @apply transition-colors duration-200;
+}
