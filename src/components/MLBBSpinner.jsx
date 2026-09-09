@@ -20,18 +20,19 @@ export default function MLBBSpinner() {
   const animationFrameRef = useRef(null);
 
   // Fetch Data Hero dari Gist saat pertama kali dimuat
-  useEffect(() => {
-    fetch(JSON_URL)
-      .then((res) => res.json())
-      .then((data) => {
-        setHeroData(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Gagal mengambil data hero:", err);
-        setLoading(false);
-      });
-  }, []);
+useEffect(() => {
+  // Tambahkan timestamp query parameter agar tidak kena cache CDN GitHub
+  fetch(`${JSON_URL}?t=${Date.now()}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setHeroData(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Gagal mengambil data hero:", err);
+      setLoading(false);
+    });
+}, []);
 
   const currentHeroes = heroData[selectedRole] || [];
 
